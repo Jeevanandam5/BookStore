@@ -23,7 +23,6 @@ import AdminProfile from './pages/admin/AdminProfile'
 import Footer from './components/Footer'
 import AdminBooks from './pages/admin/AdminBooks'
 import UpdateBook from './pages/admin/UpdateBook'
-import CheckOut from './pages/customer/CheckOut'
 
 const App = () => {
 
