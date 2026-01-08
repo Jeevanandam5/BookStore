@@ -5,6 +5,9 @@ import Sidebar from "../customer/Sidebar";
 import { Outlet } from "react-router-dom";
 
 const AdminProfile = () => {
+  
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
   const [profile, setProfile] = useState(null);
 
   const headers = {
@@ -16,7 +19,7 @@ const AdminProfile = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/users/get-user",
+          `${BACKEND_URL}/api/users/get-user`,
           { headers }
         );
         setProfile(res.data.userID);

@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth";
 
 const Login = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const [form, setForm] = useState({
         userName: "",
         password: ""
@@ -23,7 +26,7 @@ const Login = () => {
             return
         } else {
             try {
-                const res = await axios.post("http://localhost:8000/api/users/signin", form)
+                const res = await axios.post(`${BACKEND_URL}/api/users/signin`, form)
                 
                 // localStorage update
                 dispatch(authActions.login())

@@ -7,6 +7,9 @@ import Loading from "./Loading";
 import { useSelector } from "react-redux";
 
 const BookDetails = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ||"http://localhost:8000";
+
     const { id } = useParams();
     const [book, setBook] = useState(null);
     const [isPurchased, setIsPurchased] = useState(false);
@@ -22,7 +25,7 @@ const BookDetails = () => {
 
     useEffect(() => {
         const fetchBook = async () => {
-            const res = await axios.get(`http://localhost:8000/api/users/get-all-books/${id}`, { headers });
+            const res = await axios.get(`${BACKEND_URL}/api/users/get-all-books/${id}`, { headers });
             setBook(res.data.data);
             setIsPurchased(res.data.isPurchased);
         };
@@ -37,8 +40,7 @@ const BookDetails = () => {
 
     const handletoAddCart = async () => {
         try {
-            const res = await axios.put(
-                `http://localhost:8000/api/users/addToCart/${id}`,
+            const res = await axios.put(`${BACKEND_URL}/api/users/addToCart/${id}`,
                 {},
                 { headers }
             );

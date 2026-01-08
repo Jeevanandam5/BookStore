@@ -4,8 +4,12 @@ import { FiUser, FiSave } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 const UpdateProfile = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ||"http://localhost:8000";
+
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
+
 
     const [userName, setUserName] = useState(user?.userName);
     const [loading, setLoading] = useState(false);
@@ -21,7 +25,7 @@ const UpdateProfile = () => {
         try {
             setLoading(true);
             const res = await axios.put(
-                "http://localhost:8000/api/users/update-user",
+                `${BACKEND_URL}/api/users/update-user`,
                 { userName },
                 { headers }
             );

@@ -5,6 +5,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -18,7 +21,7 @@ const Checkout = () => {
     useEffect(() => {
         const fetchCart = async () => {
             const res = await axios.get(
-                "http://localhost:8000/api/users/get-userCart",
+                `${BACKEND_URL}/api/users/get-userCart`,
                 { headers }
             );
             setCartItems(res.data.data);
@@ -42,7 +45,7 @@ const Checkout = () => {
             };
 
             const res = await axios.post(
-                "http://localhost:8000/api/users/place-order",
+                `${BACKEND_URL}/api/users/place-order`,
                 orderPayload,
                 { headers }
             );

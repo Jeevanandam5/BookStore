@@ -16,8 +16,8 @@ const Sidebar = ({ data }) => {
         localStorage.removeItem("id");
         localStorage.removeItem("user");
 
-        // redirect to login or home
-        navigate("/signup"); // or "/" if you want home
+        // redirect to login 
+        navigate("/signup"); 
     };
 
     return (

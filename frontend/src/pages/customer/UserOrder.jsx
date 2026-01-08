@@ -4,6 +4,9 @@ import { FiPackage, FiBookOpen } from "react-icons/fi";
 import Loading from "../../components/Loading";
 
 const UserOrder = () => {
+
+    const BACKEND_URL =import.meta.env.VITE_BACKEND_URL ||"http://localhost:8000";
+
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -16,7 +19,7 @@ const UserOrder = () => {
         const fetchOrders = async () => {
             try {
                 const res = await axios.get(
-                    "http://localhost:8000/api/users/get-order",
+                    `${BACKEND_URL}/api/users/get-order`,
                     { headers }
                 );
                 setOrders(res.data.data);

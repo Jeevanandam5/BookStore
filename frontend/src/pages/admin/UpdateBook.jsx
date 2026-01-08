@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateBook = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -24,7 +27,7 @@ const UpdateBook = () => {
     useEffect(() => {
         const fetchBook = async () => {
             const res = await axios.get(
-                `http://localhost:8000/api/users/get-all-books/${id}`
+                `${BACKEND_URL}/api/users/get-all-books/${id}`
             );
             setForm(res.data.data);
         };
@@ -38,7 +41,7 @@ const UpdateBook = () => {
     const handleUpdate = async () => {
         try {
             await axios.put(
-                `http://localhost:8000/api/users/updatebook/${id}`,
+                `${BACKEND_URL}/api/users/updatebook/${id}`,
                 form,
                 { headers }
             );

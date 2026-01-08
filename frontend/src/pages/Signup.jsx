@@ -3,6 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const SignUp = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const navigate = useNavigate()
     const [form, setForm] = useState({
         userName: "",
@@ -22,7 +25,7 @@ const SignUp = () => {
             return
         } else {
             try {
-                const res = await axios.post("http://localhost:8000/api/users/signup",form)
+                const res = await axios.post(`${BACKEND_URL}/api/users/signup`,form)
                 alert(res.data.message)
                 navigate("/login")
             } catch (error) {

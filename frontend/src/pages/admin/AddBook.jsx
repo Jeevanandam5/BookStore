@@ -4,6 +4,9 @@ import { FiBookOpen, FiImage, FiUser, FiDollarSign, FiGlobe } from "react-icons/
 import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -22,27 +25,20 @@ const AddBook = () => {
         authorization: `Bearer ${localStorage.getItem("token")}`,
     };
 
-    // =========================
-    // HANDLE INPUT CHANGE
-    // =========================
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    // =========================
-    // SUBMIT BOOK
-    // =========================
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             setLoading(true);
 
-            const res = await axios.post(
-                "http://localhost:8000/api/users/addbook",
-                form,
-                { headers }
-            );
+            const res = await axios.post(`${BACKEND_URL}/api/users/addbook`, 
+                form, 
+                { headers });
 
             alert(res.data.message);
             navigate("/admin/profile");

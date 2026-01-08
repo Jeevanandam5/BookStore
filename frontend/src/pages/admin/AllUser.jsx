@@ -4,6 +4,9 @@ import { FiUser, FiMail } from "react-icons/fi";
 import Loading from "../../components/Loading";
 
 const AllUser = () => {
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +19,7 @@ const AllUser = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/users/get-all-users",
+          `${BACKEND_URL}/api/users/get-all-users`,
           { headers }
         );
         setUsers(res.data.users);

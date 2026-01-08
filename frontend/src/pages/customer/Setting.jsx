@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 
 const Setting = () => {
+
+    const BACKEND_URL =import.meta.env.VITE_BACKEND_URL ||"http://localhost:8000";
+
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -18,10 +21,10 @@ const Setting = () => {
         const fetchUser = async () => {
             try {
                 const res = await axios.get(
-                    "http://localhost:8000/api/users/get-user",
+                    `${BACKEND_URL}/api/users/get-user`,
                     { headers }
                 );
-                setUser(res.data.userID); // ✅ correct key
+                setUser(res.data.userID); // 
             } catch (error) {
                 console.error(error.response?.data || error.message);
             } finally {

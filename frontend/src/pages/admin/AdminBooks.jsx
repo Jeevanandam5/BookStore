@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 
 const AdminBooks = () => {
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ const AdminBooks = () => {
     const fetchBooks = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/users/get-all-books"
+          `${BACKEND_URL}/api/users/get-all-books`
         );
         setBooks(res.data.books);
       } catch (error) {

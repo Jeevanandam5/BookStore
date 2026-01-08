@@ -5,10 +5,12 @@ import Loading from './Loading'
 
 const LatestBook = () => {
 
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const [data, setData] = useState([])
     useEffect(() => {
         const fetch = async () => {
-            const res = await axios.get("http://localhost:8000/api/users/get-latest-books")
+            const res = await axios.get(`${BACKEND_URL}/api/users/get-latest-books`)
             setData(res.data.book || []);
         }
         fetch()

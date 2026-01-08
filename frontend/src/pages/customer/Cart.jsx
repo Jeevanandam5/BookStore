@@ -4,6 +4,9 @@ import { FiTrash2, FiShoppingCart } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
+
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+
     const [cartItems, setCartItems] = useState([]);
     const navigate = useNavigate()
 
@@ -17,10 +20,10 @@ const Cart = () => {
         const fetchCart = async () => {
             try {
                 const res = await axios.get(
-                    "http://localhost:8000/api/users/get-userCart",
+                    `${BACKEND_URL}/api/users/get-userCart`,
                     { headers }
                 );
-                setCartItems(res.data.data); // IMPORTANT
+                setCartItems(res.data.data); 
             } catch (error) {
                 console.error(error.response?.data || error.message);
             }
@@ -33,7 +36,7 @@ const Cart = () => {
     const handleRemove = async (bookid) => {
         try {
             const res = await axios.put(
-                `http://localhost:8000/api/users/removeCart/${bookid}`,
+                `${BACKEND_URL}/api/users/removeCart/${bookid}`,
                 {},
                 { headers }
             );
