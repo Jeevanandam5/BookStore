@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { FiShoppingBag } from "react-icons/fi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-import React from 'react'
 
 const CheckOut = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
