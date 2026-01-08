@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { authActions } from './store/auth'
 import Setting from './pages/customer/Setting'
 import UserOrder from './pages/customer/UserOrder'
-import CheckOut from './pages/customer/CheckOut'
 import UpdateProfile from './pages/customer/UpdateProfile'
 import AddBook from './pages/admin/AddBook'
 import AllUser from './pages/admin/AllUser'
@@ -46,7 +45,6 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/checkout' element={<CheckOut />} />
         {role === "admin" ? (
           <Route path="/admin/profile" element={<AdminProfile />}>
             <Route path="addbook" element={<AddBook />} />
