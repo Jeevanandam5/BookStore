@@ -4,8 +4,9 @@ import { FiShoppingBag } from "react-icons/fi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CheckOut = () => {
+import React from 'react'
 
+const CheckOut = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
 
     const navigate = useNavigate();
@@ -140,4 +141,5 @@ const CheckOut = () => {
     );
 };
 
-export default CheckOut;
+
+export default CheckOut
